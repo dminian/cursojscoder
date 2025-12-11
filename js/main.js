@@ -69,7 +69,7 @@ function formatDecimales(valor, cantDecimales)
 
 // ******************************************************
 // LÓGICA PRINCIPAL
-// USO DE LET, FOR OF, PROMPT, ALERT, SWITCH CASE, FUNCIÓN ToUpperCase, Arrays, función find, IF ELSE, DO WHILE.
+// USO DE LET, FOR OF, PROMPT, CONFIRM, ALERT, SWITCH CASE, FUNCIÓN ToUpperCase, Arrays, función find, IF ELSE, DO WHILE.
 // ******************************************************
 
 const opcionesMarcas = arrayMarcasModelos
@@ -150,17 +150,16 @@ do
             // LLAMADA A FUNCIÓN DE COTIZACION
             let prima = CotizarSeguro(modeloSeleccionado.valorVehiculo);
 
-            do
+            // USO DEL CONFIRM
 
-                recotizar = prompt(
-                    "LA COTIZACIÓN DEL SEGURO PARA EL VEHÍCULO " +
-                    marcaSeleccionada.nombre +
-                    " " +
-                    modeloSeleccionado.nombre +
-                    " ES DE: $" + prima + 
-                    " + IVA.\n\n¿Desea cotizar otro vehículo (S/N)?");
-
-            while (recotizar.toUpperCase()!="S" && recotizar.toUpperCase()!="N")
+            if (!confirm(
+                "LA COTIZACIÓN DEL SEGURO PARA EL VEHÍCULO " +
+                marcaSeleccionada.nombre +
+                " " +
+                modeloSeleccionado.nombre +
+                " ES DE: $" + prima + 
+                " + IVA.\n\n¿Desea cotizar otro vehículo?"))
+                    recotizar="N";
 
             break;
     }
